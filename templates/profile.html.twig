@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}My vulnerable profile{% endblock %}
+
+{% block body %}
+
+    {# Flat design profile page #}
+    <div class="profile">
+        <div class="profile-header">
+            <div class="profile-header-cover"></div>
+            <div class="profile-header-content">
+                <div class="profile-header-img">
+                    <img src="{{ profile_picture }}" alt="profile picture">
+                </div>
+                <div class="profile-header-info">
+                    <h4 class="m-t-10 m-b-5">John Doe</h4>
+                    <p class="m-b-10">Web Developer</p>
+                    <div id="error" class="error-message hidden">An error occurred</div>
+                </div>
+                <form id="upload-form" class="profile-header-form" method="post" enctype="multipart/form-data" action="{{ path(upload_route) }}">
+                    <input type="file" name="file" id="profile_picture" class="inputfile" required>
+                    <label for="profile_picture">Choose a file</label>
+                    <button type="submit" id="upload-button" class="btn btn-sm">Upload new picture</button>
+                </form>
+            </div>
+        </div>
+        <div class="profile-body">
+            <div class="profile-body-content">
+                <div class="profile-body-content-title">
+                    <h4>About me</h4>
+                </div>
+                <div class="profile-body-content-description">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac nunc nec dui volutpat
+                        ultrices
+                        nec nec nisi. Nullam nec metus nec nisi ultrices aliquam. Nullam nec metus nec nisi
+                    </p>
+                </div>
+            </div>
+            <div class="profile-body-content">
+                <div class="profile-body-content-title">
+                    <h4>My skills</h4>
+                </div>
+                <div class="profile-body-content-description">
+                        <ul>
+                            <li>HTML</li>
+                            <li>CSS</li>
+                            <li>JavaScript</li>
+                            <li>PHP</li>
+                        </ul>
+                </div>
+            </div>
+            <div class="profile-body-content">
+                <div class="profile-body-content-title">
+                    <h4>My projects</h4>
+                </div>
+                <div class="profile-body-content-description">
+                        <ul>
+                            <li>Project 1</li>
+                            <li>Project 2</li>
+                            <li>Project 3</li>
+                        </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {# Flash messages #}
+    {% for message in app.flashes('error') %}
+        <div class="alert alert-danger">{{ message }}</div>
+    {% endfor %}
+
+{% endblock %}
