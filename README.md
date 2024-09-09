@@ -61,7 +61,7 @@ to deploy the application on an Apache server.
 You can start the docker container by running the following commands:
 
 ```bash
-docker composer up -d
+docker compose up -d
 ```
 
 The application will be available at [http://localhost:8000](http://localhost:8000).
